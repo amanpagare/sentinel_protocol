@@ -1,0 +1,70 @@
+# Sentinel Protocol — Unity 6 Portfolio Game
+
+A compact 3D stealth/AI sandbox starter project for a Unity technical game development portfolio. The game includes a third-person player controller, orbit camera, patrol / investigate / chase enemy AI, field-of-view perception with obstacle raycasts, simple enemy contact attacks, player health, an objective trigger, a restartable win/lose loop, and an in-game debug overlay.
+
+## Important: what this ZIP is
+
+This is a **Unity project source package**, not a precompiled Windows/macOS game executable. Open it in Unity 6 and let Unity generate its local project files. The scene is included as text-based Unity YAML. It uses built-in primitives and Unity packages rather than external art assets.
+
+## Requirements
+
+- Unity 6.x
+- Universal Render Pipeline (URP) template recommended
+- Unity Input System package
+- AI Navigation package (`com.unity.ai.navigation`) for NavMeshSurface
+- Git (optional)
+
+## Open the project
+
+1. Extract the ZIP.
+2. In Unity Hub, choose **Add → Add project from disk** and select the extracted `SentinelProtocol-Full` folder.
+3. Open with Unity 6.
+4. If Unity reports missing packages, open Package Manager and install:
+   - Input System (`com.unity.inputsystem`)
+   - AI Navigation (`com.unity.ai.navigation`)
+5. In **Edit → Project Settings → Player → Active Input Handling**, select **Input System Package (New)** if prompted, then restart Unity.
+6. Open `Assets/_SentinelProtocol/Scenes/Arena.unity`.
+7. Press Play.
+
+## Controls
+
+- WASD / arrow keys: move
+- Shift: sprint
+- Space: jump
+- Mouse: orbit camera
+- Escape: unlock cursor; click the Game view to lock again
+- Tab: toggle AI debug overlay
+- R: restart after win/loss
+
+## Gameplay
+
+Reach the green objective zone while avoiding security sentinels. Enemies patrol between waypoints, detect the player with a field-of-view sensor and line-of-sight raycast, investigate the last known position, and chase when the player is visible. A sentinel within attack range damages the player. The HUD shows health and status. Press Tab to inspect AI states and sensor information.
+
+## Included systems
+
+- `PlayerController`: camera-relative movement, sprint, jump, gravity
+- `ThirdPersonCamera`: mouse orbit and smooth follow
+- `Health`: reusable health/damage/death component
+- `EnemySensor`: view distance, view angle, obstacle raycast, Gizmo visualization
+- `EnemyNavigator`: waypoint patrol and NavMesh movement
+- `SentinelAI`: Patrol, Investigate, Chase, Attack state machine
+- `GameManager`: win/loss and restart loop
+- `ObjectiveTrigger`: reach-the-objective win condition
+- `HUDController`: runtime HUD and debug overlay
+- `ArenaBootstrap`: runtime scene setup, fallback arena, NavMesh surface setup and enemy creation
+
+## Troubleshooting
+
+- **Missing AI Navigation types:** install AI Navigation from Package Manager and allow Unity to recompile.
+- **No enemy movement:** make sure the NavMesh is baked. The included `ArenaBootstrap` attempts a runtime build when a `NavMeshSurface` is available. If your package version or platform prevents runtime baking, select the ground and bake a NavMesh using the AI Navigation component.
+- **Input namespace errors:** install Input System and enable it in Player Settings.
+- **Pink materials:** this project uses basic built-in materials. If importing into a URP project, Unity should render them normally; assign URP/Lit materials if needed.
+- **Scene opens with missing references:** use the included scene, or create an empty scene and add `ArenaBootstrap` to an empty GameObject; it can generate a simple arena at runtime.
+
+## Portfolio checklist before sharing
+
+- Test on your own machine in the exact Unity 6 version you will list on your resume.
+- Fix any compiler errors or warnings in the Console.
+- Record a 60–90 second gameplay video.
+- Add screenshots and a short technical explanation of the FSM, vision math, and NavMesh setup.
+- Only describe features as complete after testing them.

@@ -14,17 +14,6 @@ This is a **Unity project source package**, not a precompiled Windows/macOS game
 - AI Navigation package (`com.unity.ai.navigation`) for NavMeshSurface
 - Git (optional)
 
-## Open the project
-
-1. Extract the ZIP.
-2. In Unity Hub, choose **Add → Add project from disk** and select the extracted `SentinelProtocol-Full` folder.
-3. Open with Unity 6.
-4. If Unity reports missing packages, open Package Manager and install:
-   - Input System (`com.unity.inputsystem`)
-   - AI Navigation (`com.unity.ai.navigation`)
-5. In **Edit → Project Settings → Player → Active Input Handling**, select **Input System Package (New)** if prompted, then restart Unity.
-6. Open `Assets/_SentinelProtocol/Scenes/Arena.unity`.
-7. Press Play.
 
 ## Controls
 
@@ -61,10 +50,4 @@ Reach the green objective zone while avoiding security sentinels. Enemies patrol
 - **Pink materials:** this project uses basic built-in materials. If importing into a URP project, Unity should render them normally; assign URP/Lit materials if needed.
 - **Scene opens with missing references:** use the included scene, or create an empty scene and add `ArenaBootstrap` to an empty GameObject; it can generate a simple arena at runtime.
 
-## Portfolio checklist before sharing
 
-- Test on your own machine in the exact Unity 6 version you will list on your resume.
-- Fix any compiler errors or warnings in the Console.
-- Record a 60–90 second gameplay video.
-- Add screenshots and a short technical explanation of the FSM, vision math, and NavMesh setup.
-- Only describe features as complete after testing them.
